@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.poynt.ratingsample">
+
+    <uses-permission android:name="poynt.permission.SECOND_SCREEN_SERVICE" />
+
+    <application
+        android:name=".RatingSampleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".SampleRatingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="co.poynt.os.services.v1.IPoyntRatingAndReviewService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="co.poynt.os.service.capability"
+                android:resource="@xml/rating_and_review_capability" />
+            <!-- Optional: Provide a logo that will appear on screen -->
+            <meta-data
+                android:name="co.poynt.os.service.logo"
+                android:resource="@mipmap/ic_launcher" />
+        </service>
+    </application>
+
+</manifest>
